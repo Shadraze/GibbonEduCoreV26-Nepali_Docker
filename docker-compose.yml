@@ -1,8 +1,8 @@
 version: "3"
 services:
   gibbon:
-    build: ./Gibbon
-    # image: kerrongordon/gibbon:latest
+    # build: ./Gibbon
+    image: kerrongordon/gibbon:latest
     container_name: gibbon
     restart: unless-stopped
     ports:
