@@ -14,7 +14,7 @@ RUN apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     php8.1 apache2 php8.1 php8.1-gd php8.1-mysql php8.1-zip php8.1-curl \
     php8.1-gettext php8.1-pdo php8.1-xml php8.1-mbstring php8.1-intl wget ca-certificates
-     
+
 RUN cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/gibbon.local.conf 
 RUN sed -i 's+/var/www/html+${INSTALL_DIR}+g' /etc/apache2/sites-available/gibbon.local.conf 
 RUN ln -s ../sites-available/gibbon.local.conf /etc/apache2/sites-enabled/gibbon.local.conf 
@@ -25,7 +25,7 @@ RUN mkdir -p ${INSTALL_DIR}
 RUN sed -i 's/;max_input_vars = 1000/max_input_vars = 6000/' /etc/php/8.1/apache2/php.ini 
 RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/' /etc/php/8.1/apache2/php.ini 
 RUN sed -i 's/post_max_size = 8M/post_max_size = 51M/' /etc/php/8.1/apache2/php.ini 
-RUN a2dissite 000-default.conf && service apache2 restart &&\
+RUN a2dissite 000-default.conf && service apache2 restart
 RUN rm -rf /tmp/* 
 RUN apt-get remove -y wget 
 RUN apt-get clean autoclean 

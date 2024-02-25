@@ -1,10 +1,18 @@
-# Run following commands in order:
+# WIP, not suited for production yet!!! only for testing!!!
 
-./gibbonEd_Download.sh
+# To setup and deploy, be in this directory and run:
+./Deploy.sh
 
-docker compose build
+NOTE: It can take a while for database to startup, <br>
+during which gibbon might say that it can't connect to the database.
 
-docker compose up
+To stop, use: ./Stop.sh
 
+# During Gibbon Installation, for step 2, use:
+Database Address -> db <br>
+Database Name -> gibbondb <br>
+User -> gibbon <br>
+Password -> gibbonPass <br>
 
-Ref: Original Dockerfile can be found through github tag  "kerrongordon/gibbon-docker"
+# Refs:
+Original docker project can be obtained through kerrongordon's github, using github tag "kerrongordon/gibbon-docker"
