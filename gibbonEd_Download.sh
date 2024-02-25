@@ -5,6 +5,7 @@ INSTALL_DIR="_Volumes/gibbonEd/"
 VERSION="26.0.00"
 GIBBON_URL="https://github.com/GibbonEdu/core/releases/download/v${VERSION}/GibbonEduCore-InstallBundle.tar.gz"
 
+sudo mkdir _Volumes
 sudo mkdir ${INSTALL_DIR}
 sudo wget -c ${GIBBON_URL} -P /tmp/ 
 sudo tar -xzf /tmp/GibbonEduCore-InstallBundle.tar.gz --directory ${INSTALL_DIR}
