@@ -1,0 +1,39 @@
+version: "3"
+services:
+  gibbon:
+    build: ./Gibbon
+    # image: kerrongordon/gibbon:latest
+    container_name: gibbon
+    restart: unless-stopped
+    ports:
+      - 8480:80
+    volumes:
+      - ./_Volumes/gibbonEd:/var/www/gibbon.local/
+      - ./NepaliIntegration_GibbonFiles/NepaliIntegration:/var/www/gibbon.local/NepaliIntegration
+      - ./NepaliIntegration_GibbonFiles/modules/Timetable/moduleFunctions.php:/var/www/gibbon.local/modules/Timetable/moduleFunctions.php
+      # - ./NepaliIntegration_GibbonFiles/index_custom.php:/var/www/gibbon.local/index_custom.php
+      - ./NepaliIntegration_GibbonFiles/gibbon.php:/var/www/gibbon.local/gibbon.php
+    depends_on:
+      - db
+      - nepali-integration-backend
+
+  db:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    # ports:
+    #   - 3406:3306
+    volumes:
+      - ./_Volumes/gibbon_db:/var/lib/mysql
+
+  nepali-integration-backend:
+    build: ./NepaliIntegration_Backend
+    container_name: nepali-integration-backend
+    restart: unless-stopped
+    ports: 
+      - 8848:8848
