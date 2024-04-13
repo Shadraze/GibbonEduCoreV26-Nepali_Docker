@@ -2,8 +2,8 @@
 
 # Be in this directory before running any of these commands!!!
 
-# To setup and deploy, be in this directory and run:
-./Deploy.sh
+# How-to for this project:
+To run, use: ./Deploy.sh
 
 NOTE: It can take a while for database to startup, <br>
 during which gibbon might say that it can't connect to the database.
