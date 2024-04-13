@@ -5,7 +5,7 @@
 # How-to for this project:
 To run, use: ./Deploy.sh
 
-To stop, use: ./Stop.sh
+To stop, use: ./Stop.sh, or 'docker compose down'
 
 To clear database (make sure you are in this directory!!!), first stop and then: 'rm -rf ./_Volumes'. <br> Deploy again afterwards to start new installation.
 
