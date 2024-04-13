@@ -7,7 +7,7 @@ To run, use: ./Deploy.sh
 
 To stop, use: ./Stop.sh, or 'docker compose down'
 
-To clear database (make sure you are in this directory!!!), first stop and then: 'rm -rf ./_Volumes'. <br> Deploy again afterwards to start fresh installation.
+To clear all data (!!!make sure you are in this directory!!!), first stop and then: 'rm -rf ./_Volumes'. <br> Deploy again afterwards to start fresh installation.
 
 NOTE: It can take a while for database to startup, <br>
 during which gibbon might say that it can't connect to the database.<br>
