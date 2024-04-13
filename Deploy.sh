@@ -1,5 +1,8 @@
 #!/bin/bash
 
+apt update
+apt install -y docker-compose-v2 wget tar
+
 INSTALL_DIR="_Volumes/gibbonEd/"
 
 VERSION="26.0.00"
