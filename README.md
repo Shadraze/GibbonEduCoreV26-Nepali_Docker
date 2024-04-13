@@ -5,12 +5,12 @@
 # How-to for this project:
 To run, use: ./Deploy.sh
 
-NOTE: It can take a while for database to startup, <br>
-during which gibbon might say that it can't connect to the database.
-
 To stop, use: ./Stop.sh
 
-To clear database (make sure you are in this directory!!!), first stop and then: 'rm -rf ./_Volumes'. Deploy again afterwards to start new installation.
+To clear database (make sure you are in this directory!!!), first stop and then: 'rm -rf ./_Volumes'. <br> Deploy again afterwards to start new installation.
+
+NOTE: It can take a while for database to startup, <br>
+during which gibbon might say that it can't connect to the database.<br>
 
 # During Gibbon Installation, for step 2, use:
 Database Address -> db <br>
