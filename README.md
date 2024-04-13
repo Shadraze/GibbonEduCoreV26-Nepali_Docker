@@ -1,9 +1,5 @@
 # WIP, not suited for production yet!!! only for testing!!!
 
-# Pre-Installation:
-install docker, make sure you have wget and tar too <br>
-on ubuntu -> 'apt install -y docker-compose-v2 wget tar'
-
 # To setup and deploy, be in this directory and run:
 ./Deploy.sh
 
