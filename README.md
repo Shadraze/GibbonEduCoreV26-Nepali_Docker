@@ -1,5 +1,8 @@
 # WIP, not suited for production yet!!! only for testing!!!
 
+# Pre-Installation:
+install docker-> 'apt install docker-compose-v2'
+
 # To setup and deploy, be in this directory and run:
 ./Deploy.sh
 
