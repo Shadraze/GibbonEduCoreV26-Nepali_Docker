@@ -54,17 +54,42 @@ const NpDateHelper = new NepaliDateHelper();
 
 function AD2BS_ifToggledBS($adDate)
 {
+    $adDateParts = explode("/", $adDate);
+    //php strtotime needs mm/dd/yyyy, before this is in dd/mm/yyyy
+    $formatCorrectedADdate = $adDateParts[1]."/".$adDateParts[0]."/".$adDateParts[2];
+
     if(NpDateHelper->BSisToggled())
     {
-        return NpDateHelper->AD2BS($adDate);
+        return NpDateHelper->AD2BS($formatCorrectedADdate);
     }
     return $adDate;
 }
 
+
 //// Test:
-// $dates = array("2024/04/18", "2020/03/07");
+// function fillAdDates()
+// {
+//     $dates = array();   
+//     foreach(range(1,29) as $index) {
+//         array_push($dates,$index."/03"."/2024");
+//         //do your magic here
+//      }
+//     foreach(range(1,30) as $index) {
+//         array_push($dates,$index."/04"."/2024");
+//         //do your magic here
+//      }
+//     foreach(range(1,31) as $index) {
+//         array_push($dates,$index."/05"."/2024");
+//         //do your magic here
+//      }
+
+//     return $dates;
+// }
+
+// $dates = fillAdDates();
 // foreach ($dates as $date) {
 
 //     print_r(AD2BS_ifToggledBS($date));
 //     echo "\n";
 // }
+////
