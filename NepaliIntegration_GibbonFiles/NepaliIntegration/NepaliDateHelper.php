@@ -2,44 +2,69 @@
 
 namespace NepaliIntegration;
 
-use GuzzleHttp\Client;
+require "NepaliIntegration/CustomCalendar.php";
+use NepaliIntegration\CustomCalendar;
+
+session_start();
+// Test:
+// $_SESSION['bsToggled'] = true;
 
 class NepaliDateHelper
 {
-    private static Client $client;
+    private static CustomCalendar $calendarBS;
+    private static bool $isBStoggled = false;
 
     public function __construct()
     {
-        self::$client = new Client();                        
-    }
-
-    private static function apiCallBackend($year, $month, $day)
-    {
-        $response = self::$client->post("nepali-integration-backend:8848/ad2bs", ['json' => ['year' => $year, 'month' => $month, 'day' => $day]]);
-        return json_decode($response->getBody());
+        self::$calendarBS = new CustomCalendar('NepaliIntegration/bsCalendarData.json');                        
     }
 
     public static function AD2BS($adDate)
     {
-        $adDateTime = strtotime($adDate);
+        $bsDate = self::$calendarBS->dateAD_ToCalendarDate($adDate);
+                
+        $bsYear = $bsDate["year"];
+        $bsMonth = $bsDate["month"];
+        $bsDay = $bsDate["day"];
 
-        $adYear=date("Y",$adDateTime);
-        $adMonth=date("m",$adDateTime);
-        $adDay=date("d",$adDateTime);
+        return "BS ".$bsYear."-".$bsMonth."-".$bsDay;
+    }
+
+    public static function BSisToggled()
+    {
+        self::$isBStoggled = false;
+
+        if(!empty($_SESSION['bsToggled']))
+        {
+            if($_SESSION['bsToggled'] === true)
+            {
+                self::$isBStoggled = true;
+            }
+        }
+        else
+        {
+            $_SESSION['bsToggled'] = self::$isBStoggled;
+        }
         
-        $bsDate = self::apiCallBackend($adYear,$adMonth,$adDay);
-
-        $bsYear = $bsDate->year;
-        $bsMonth = $bsDate->month;
-        $bsDay = $bsDate->day;
-
-        return $bsYear."-".$bsMonth."-".$bsDay;
+        return self::$isBStoggled;    
     }
 }
 
 const NpDateHelper = new NepaliDateHelper();
 
-function AD2BS($adDate)
+function AD2BS_ifToggledBS($adDate)
 {
-    return NpDateHelper->AD2BS($adDate);
+    if(NpDateHelper->BSisToggled())
+    {
+        return NpDateHelper->AD2BS($adDate);
+    }
+    return $adDate;
 }
+
+//// Test:
+// $dates = array("2024/04/18", "2020/03/07");
+// foreach ($dates as $date) {
+
+//     print_r(AD2BS_ifToggledBS($date));
+//     echo "\n";
+// }

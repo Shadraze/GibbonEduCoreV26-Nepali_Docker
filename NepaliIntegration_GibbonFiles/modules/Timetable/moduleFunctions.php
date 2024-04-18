@@ -30,7 +30,7 @@ use Gibbon\Domain\School\SchoolYearSpecialDayGateway;
 use Gibbon\Domain\Staff\StaffDutyPersonGateway;
 
 require "NepaliIntegration/NepaliDateHelper.php";
-use function NepaliIntegration\AD2BS as AD2BS;
+use function NepaliIntegration\AD2BS_ifToggledBS as AD2BS_ifToggled;
 
 //Checks whether or not a space is free over a given period of time, returning true or false accordingly.
 function isSpaceFree($guid, $connection2, $foreignKey, $foreignKeyID, $date, $timeStart, $timeEnd)
@@ -1011,7 +1011,7 @@ function renderTT($guid, $connection2, $gibbonPersonID, $gibbonTTID, $title = ''
                             $output .= __($day['nameShort']).'<br/>';
                         }
                     }
-                    $output .= "<span style='font-size: 80%; font-style: italic'>".AD2BS(date($session->get('i18n')['dateFormatPHP'], ($startDayStamp + (86400 * $dateCorrection)))).'</span><br/>';
+                    $output .= "<span style='font-size: 80%; font-style: italic'>".AD2BS_ifToggled(date($session->get('i18n')['dateFormatPHP'], ($startDayStamp + (86400 * $dateCorrection)))).'</span><br/>';
 
                     $dateCheck = date('Y-m-d', ($startDayStamp + (86400 * $dateCorrection)));
 
@@ -2272,7 +2272,7 @@ function renderTTSpace($guid, $connection2, $gibbonSpaceID, $gibbonTTID, $title 
                     else {
                         $output .= ($rowDay['nameShort'] ?? Format::dayOfWeekName($startDayStamp + (86400 * $dateCorrection))).'<br/>';
                     }
-                    $output .= "<span style='font-size: 80%; font-style: italic'>".AD2BS(date($session->get('i18n')['dateFormatPHP'], ($startDayStamp + (86400 * $dateCorrection)))).'</span><br/>';
+                    $output .= "<span style='font-size: 80%; font-style: italic'>".AD2BS_ifToggled(date($session->get('i18n')['dateFormatPHP'], ($startDayStamp + (86400 * $dateCorrection)))).'</span><br/>';
                     try {
                         $dataSpecial = array('date' => date('Y-m-d', ($startDayStamp + (86400 * $dateCorrection))));
                         $sqlSpecial = "SELECT * FROM gibbonSchoolYearSpecialDay WHERE date=:date AND type='Timing Change'";

@@ -1,8 +1,9 @@
 version: "3"
 services:
   gibbon:
-    # build: ./Gibbon
-    image: kerrongordon/gibbon:26.0.00
+    build: ./Gibbon
+    ## Prefer building with above line, but comment it and uncomment the next line if you need to avoid building (doing so will cause redundant gibbon download in container)
+    # image: kerrongordon/gibbon:26.0.00 
     container_name: gibbon
     restart: unless-stopped
     ports:
@@ -11,11 +12,10 @@ services:
       - ./_Volumes/gibbonEd:/var/www/gibbon.local/
       - ./NepaliIntegration_GibbonFiles/NepaliIntegration:/var/www/gibbon.local/NepaliIntegration
       - ./NepaliIntegration_GibbonFiles/modules/Timetable/moduleFunctions.php:/var/www/gibbon.local/modules/Timetable/moduleFunctions.php
-      # - ./NepaliIntegration_GibbonFiles/index_custom.php:/var/www/gibbon.local/index_custom.php
-      - ./NepaliIntegration_GibbonFiles/gibbon.php:/var/www/gibbon.local/gibbon.php
+      - ./NepaliIntegration_GibbonFiles/index_custom.php:/var/www/gibbon.local/index_custom.php
+      - ./NepaliIntegration_GibbonFiles/index.php:/var/www/gibbon.local/index.php
     depends_on:
       - db
-      - nepali-integration-backend
 
   db:
     image: mysql:latest
@@ -30,10 +30,3 @@ services:
     #   - 3406:3306
     volumes:
       - ./_Volumes/gibbon_db:/var/lib/mysql
-
-  nepali-integration-backend:
-    build: ./NepaliIntegration_Backend
-    container_name: nepali-integration-backend
-    restart: unless-stopped
-    ports: 
-      - 8848:8848

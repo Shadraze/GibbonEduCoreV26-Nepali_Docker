@@ -17,4 +17,3 @@ chmod -R 755 ${INSTALL_DIR}
 chmod -R 774 ${INSTALL_DIR}uploads
 
 docker compose build
-docker compose up -d

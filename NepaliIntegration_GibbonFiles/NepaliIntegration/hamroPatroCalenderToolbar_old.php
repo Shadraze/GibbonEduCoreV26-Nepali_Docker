@@ -1,3 +1,5 @@
+<?php
+?>
 <style>
 #hamropatroDialog {
     overflow: hidden;
