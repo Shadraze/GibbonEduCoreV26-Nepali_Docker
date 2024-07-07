@@ -14,6 +14,7 @@ services:
       - ./NepaliIntegration_GibbonFiles/modules/Timetable/moduleFunctions.php:/var/www/gibbon.local/modules/Timetable/moduleFunctions.php
       - ./NepaliIntegration_GibbonFiles/index_custom.php:/var/www/gibbon.local/index_custom.php
       - ./NepaliIntegration_GibbonFiles/index.php:/var/www/gibbon.local/index.php
+      - ./NepaliIntegration_GibbonFiles/CHANGELOG.txt:/var/www/gibbon.local/CHANGELOG.txt
     depends_on:
       - db
 
