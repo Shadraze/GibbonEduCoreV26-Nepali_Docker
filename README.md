@@ -1,8 +1,10 @@
-# WIP, not suited for production yet!!! only for testing!!!
+# WIP Nepali Version. MOT suited for production yet!
+The goal is to add Nepali calender support to the open source Gibbon School Project.
+The Gibbon Project is deeply integrated with the Gregorian calender and the objective of the Project is to rewrite some portions of the core to facilitate integration of other calenders.
 
-# Be in this directory before running any of these commands.
+# Initial Setup:
+Be in this directory before running any of these commands.
 
-# How-to for this project:
 To install, use: ./Install.sh.
 
 To run, use: ./Start.sh,  or 'docker compose up -d'. (Not using -d (terminal detach flag) will run in current terminal, closing this terminal will close project too, alternatively press Ctrl+C to stop the project safely)
@@ -17,11 +19,12 @@ To restart, use: ./Restart.sh -> runs ./Stop.sh and then ./Start.sh
 
 To reinstall, clear _Volumes folder (needs permission, !!! will clear database and gibbon folder, so backup if needed) and install.
 
-# During Gibbon Installation, for step 2, use:
+Note: During Gibbon Installation, for step 2, use:
 Database Address -> db <br>
 Database Name -> gibbondb <br>
 User -> gibbon <br>
 Password -> gibbonPass <br>
 
 # Refs:
-Original docker project can be obtained through kerrongordon's github, using github tag "kerrongordon/gibbon-docker"
+The Gibbon Project: https://github.com/GibbonEdu/core
+Original Docker Project by kerrongordon: https://github.com/kerrongordon/gibbon-docker
