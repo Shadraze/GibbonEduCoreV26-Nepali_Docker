@@ -1,4 +1,4 @@
-# WIP Nepali Version. MOT suited for production yet!
+# WIP Nepali Version. Not suited for production yet!
 The goal is to add Nepali calender support to the open source Gibbon School Project.
 The Gibbon Project is deeply integrated with the Gregorian calender and the objective of the Project is to rewrite some portions of the core to facilitate integration of other calenders.
 
